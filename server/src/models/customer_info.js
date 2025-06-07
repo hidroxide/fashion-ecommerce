@@ -9,6 +9,7 @@ const Customer_Info = sequelize.define('Customer_Info', {
   phone_number: { type: DataTypes.STRING, defaultValue: '' },
   address: { type: DataTypes.STRING, defaultValue: '' },
 }, {
+  tableName: 'customer_infos',
   timestamps: false,
 })
 

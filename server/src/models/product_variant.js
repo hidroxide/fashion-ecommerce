@@ -10,6 +10,7 @@ const Product_Variant = sequelize.define('product_variant', {
 	quantity: { type: DataTypes.INTEGER, defaultValue: 0 },
 	state: { type: DataTypes.BOOLEAN, defaultValue: true },
 }, {
+	tableName: 'product_variants',
 	timestamps: true,
 	createdAt: 'created_at',
 	updatedAt: false,

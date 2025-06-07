@@ -13,6 +13,7 @@ const Order = sequelize.define('Order', {
 	delivery_charges: { type: DataTypes.INTEGER, allowNull: false },
 	total_order_value: { type: DataTypes.INTEGER, allowNull: false },
 }, {
+	tableName: 'orders',
 	timestamps: false,
 });
 

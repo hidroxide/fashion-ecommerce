@@ -8,6 +8,7 @@ const Order_Status_Change_History = sequelize.define('Order_Status_Change_Histor
 	order_id: { type: DataTypes.CHAR(14), primaryKey: true },
 	state_id: { type: DataTypes.INTEGER, primaryKey: true },
 }, {
+	tableName: 'order_status_change_histories',
 	timestamps: true,
 	createdAt: 'created_at',
 	updatedAt: false

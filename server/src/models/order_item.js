@@ -12,6 +12,7 @@ const Order_Item = sequelize.define('Order_Item', {
 	quantity: { type: DataTypes.INTEGER, allowNull: false },
 	total_value: { type: DataTypes.INTEGER, allowNull: false },
 }, {
+	tableName: 'order_items',
 	timestamps: false,
 })
 

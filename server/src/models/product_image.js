@@ -7,6 +7,7 @@ const Product_Image = sequelize.define('Product_Image', {
     image_id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
     path: DataTypes.STRING,
 }, {
+    tableName: 'product_images',
     timestamps : false,
 })
 

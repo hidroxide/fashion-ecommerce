@@ -6,6 +6,7 @@ const Size = sequelize.define('Size', {
     size_id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
     size_name: DataTypes.STRING,
 }, {
+    tableName: 'sizes',
     timestamps : false
 })
 

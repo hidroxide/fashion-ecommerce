@@ -11,6 +11,7 @@ const Feedback = sequelize.define('Feedback', {
 	user_id: { type: DataTypes.UUID, allowNull: false },
 	product_variant_id: { type: DataTypes.INTEGER, allowNull: false },
 }, {
+	tableName: 'feedbacks',
 	timestamps: true,
 	createdAt: 'created_at',
 	updatedAt: 'updated_at',

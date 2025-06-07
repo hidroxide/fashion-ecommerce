@@ -8,6 +8,7 @@ const Product_Price_History = sequelize.define('Product_Price_History', {
 	created_at: { type: DataTypes.DATE, defaultValue: sequelize.literal("CURRENT_TIMESTAMP"), primaryKey: true },
 	price: { type: DataTypes.INTEGER, defaultValue: 0 },
 }, {
+	tableName: 'product_price_histories',
 	timestamps: false,
 })
 

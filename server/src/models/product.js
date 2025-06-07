@@ -11,6 +11,7 @@ const Product = sequelize.define('Product', {
 	sold: { type: DataTypes.INTEGER, defaultValue: 0 },
 	feedback_quantity: { type: DataTypes.INTEGER, defaultValue: 0 },
 }, {
+	tableName: 'products',
 	timestamps: true,
 	createdAt: 'created_at',
 	updatedAt: false,
