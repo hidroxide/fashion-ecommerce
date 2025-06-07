@@ -74,18 +74,23 @@ let create = async (req, res, next) => {
             // tính rate trung bình và đếm số lượng
             let product = await productVariant.getProduct();
             let product_id = product.product_id;
-            let [result] = await Feedback.findAll({
+            let result = await Feedback.findOne({
                 attributes: [
                     [Sequelize.fn('avg', Sequelize.col('rate')), 'avg'],
                     [Sequelize.fn('count', Sequelize.col('rate')), 'count']
                 ],
-                include: { model: Product_Variant, where: { product_id } },
+                include: {
+                    model: Product_Variant,
+                    attributes: [],
+                    where: { product_id }
+                },
+                raw: true
             });
-
-            // Cập nhật lại Rating và feedbackQuantity cho product tương ứng
-            let rating = parseFloat(result.dataValues.avg)
-            let feedback_quantity = parseInt(result.dataValues.count)
-            await product.update({ rating, feedback_quantity })
+            
+            let rating = result && result.avg ? parseFloat(result.avg) : 0;
+            let feedback_quantity = result && result.count ? parseInt(result.count) : 0;
+            await product.update({ rating, feedback_quantity });
+            
 
             return res.send(feedback);
         } else {
@@ -116,16 +121,20 @@ let update = async (req, res, next) => {
             let productVariant = await feedback.getProduct_variant();
             let product = await productVariant.getProduct();
             let product_id = product.product_id;
-            let [result] = await Feedback.findAll({
+            let result = await Feedback.findOne({
                 attributes: [
-                    [Sequelize.fn('avg', Sequelize.col('rate')), 'avg'],
+                    [Sequelize.fn('avg', Sequelize.col('rate')), 'avg']
                 ],
-                include: { model: Product_Variant, where: { product_id } },
+                include: {
+                    model: Product_Variant,
+                    attributes: [],
+                    where: { product_id }
+                },
+                raw: true
             });
-
-            // Cập nhật lại Rating và feedbackQuantity cho product tương ứng
-            let rating = parseFloat(result.dataValues.avg)
-            await product.update({ rating })
+            
+            let rating = result && result.avg ? parseFloat(result.avg) : 0;
+            await product.update({ rating });            
 
             return res.send({ message: 'Cập nhật feedback thành công!' })
         }
